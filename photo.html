@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional CSS for the photo gallery */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .gallery img {
+            width: auto; /* Allow the width to adjust automatically */
+            height: 150px; /* Set a fixed height for each image */
+            margin: 5px; /* Add a small space between each image */
+            cursor: pointer; /* Change cursor to pointer for clickable images */
+        }
+
+        /* CSS for the modal */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+        }
+
+        /* Modal content */
+        .modal-content {
+            position: relative;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80%; /* Adjust as needed */
+            height: 80%; /* Adjust as needed */
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* Close button */
+        .close {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        /* Bouncing and glowing effect for "My Photos" */
+        h2.bouncing-text {
+            font-family: 'Bubblegum Sans', cursive; /* Bubble font */
+            animation: bounce 2s infinite alternate; /* Bouncing animation */
+            color: #09ff00; /* Yellow color */
+            text-shadow: 0 0 10px #ff00a6, 0 0 20px #ff00ae, 0 0 30px #ff00bb; /* Glowing effect */
+            font-size: 28px;
+            margin-top: -20px; /* Adjusted margin-top */
+            padding-top: 10px;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-art"></div>
+    
+    <header>
+        <h1></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="photo.html">Photo</a></li>
+                <li><a href="video.html">Video</a></li>
+                <li><a href="music.html">Music</a></li>
+                <li><a href="fineart.html">Fine Art</a></li> 
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="design.html">Design</a></li> 
+                <li><a href="ollie.html">Ollie</a></li>
+                <li><a href="room.html">Bedroom</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main-content">
+        <h2 class="bouncing-text">My Photos</h2> <!-- Apply bouncing and glowing effect -->
+        <div class="gallery">
+            <img src="photo83.jpg" alt="Photo 83" onclick="openModal('photo83.jpg', 'Photo 83')">
+            <img src="photo82.jpg" alt="Photo 82" onclick="openModal('photo82.jpg', 'Photo 82')">
+            <img src="photo81.jpg" alt="Photo 81" onclick="openModal('photo81.jpg', 'Photo 81')">
+            <img src="photo80.jpg" alt="Photo 80" onclick="openModal('photo80.jpg', 'Photo 80')">
+            <img src="photo79.jpg" alt="Photo 79" onclick="openModal('photo79.jpg', 'Photo 79')">
+            <img src="photo78.jpg" alt="Photo 78" onclick="openModal('photo78.jpg', 'Photo 78')">
+            <img src="photo77.jpg" alt="Photo 77" onclick="openModal('photo77.jpg', 'Photo 77')">
+            <img src="photo76.jpg" alt="Photo 76" onclick="openModal('photo76.jpg', 'Photo 76')">
+            <!-- Continue with more images -->
+            <img src="photo75.jpg" alt="Photo 75" onclick="openModal('photo75.jpg', 'Photo 75')">
+            <img src="photo74.jpg" alt="Photo 74" onclick="openModal('photo74.jpg', 'Photo 74')">
+            <img src="photo73.jpg" alt="Photo 73" onclick="openModal('photo73.jpg', 'Photo 73')">
+            <img src="photo72.jpg" alt="Photo 72" onclick="openModal('photo72.jpg', 'Photo 72')">
+            <img src="photo71.jpg" alt="Photo 71" onclick="openModal('photo71.jpg', 'Photo 71')">
+            <img src="photo70.jpg" alt="Photo 70" onclick="openModal('photo70.jpg', 'Photo 70')">
+            <img src="photo69.jpg" alt="Photo 69" onclick="openModal('photo69.jpg', 'Photo 69')">
+            <img src="photo68.jpg" alt="Photo 68" onclick="openModal('photo68.jpg', 'Photo 68')">
+            <img src="photo67.jpg" alt="Photo 67" onclick="openModal('photo67.jpg', 'Photo 67')">
+            <img src="photo66.jpg" alt="photo66.jpg" alt="Photo 66" onclick="openModal('photo66.jpg', 'Photo 66')">
+            <img src="photo65.jpg" alt="Photo 65" onclick="openModal('photo65.jpg', 'Photo 65')">
+            <img src="photo64.jpg" alt="Photo 64" onclick="openModal('photo64.jpg', 'Photo 64')">
+            <img src="photo63.jpg" alt="Photo 63" onclick="openModal('photo63.jpg', 'Photo 63')">
+            <img src="photo62.jpg" alt="Photo 62" onclick="openModal('photo62.jpg', 'Photo 62')">
+            <img src="photo61.jpg" alt="Photo 61" onclick="openModal('photo61.jpg', 'Photo 61')">
+            <img src="photo60.jpg" alt="Photo 60" onclick="openModal('photo60.jpg', 'Photo 60')">
+            <img src="photo59.jpg" alt="Photo 59" onclick="openModal('photo59.jpg', 'Photo 59')">
+            <img src="photo58.jpg" alt="Photo 58" onclick="openModal('photo58.jpg', 'Photo 58')">
+            <img src="photo57.jpg" alt="Photo 57" onclick="openModal('photo57.jpg', 'Photo 57')">
+            <img src="photo56.jpg" alt="Photo 56" onclick="openModal('photo56.jpg', 'Photo 56')">
+            <img src="photo55.jpg" alt="Photo 55" onclick="openModal('photo55.jpg', 'Photo 55')">
+            <img src="photo54.jpg" alt="Photo 54" onclick="openModal('photo54.jpg', 'Photo 54')">
+            <img src="photo53.jpg" alt="Photo 53" onclick="openModal('photo53.jpg', 'Photo 53')">
+            <img src="photo52.jpg" alt="Photo 52" onclick="openModal('photo52.jpg', 'Photo 52')">
+            <img src="photo51.jpg" alt="Photo 51" onclick="openModal('photo51.jpg', 'Photo 51')">
+            <img src="photo50.jpg" alt="Photo 50" onclick="openModal('photo50.jpg', 'Photo 50')">
+            <img src="photo49.jpg" alt="Photo 49" onclick="openModal('photo49.jpg', 'Photo 49')">
+            <img src="photo48.jpg" alt="Photo 48" onclick="openModal('photo48.jpg', 'Photo 48')">
+            <img src="photo47.jpg" alt="Photo 47" onclick="openModal('photo47.jpg', 'Photo 47')">
+            <img src="photo46.jpg" alt="Photo 46" onclick="openModal('photo46.jpg', 'Photo 46')">
+            <img src="photo45.jpg" alt="Photo 45" onclick="openModal('photo45.jpg', 'Photo 45')">
+            <img src="photo44.jpg" alt="Photo 44" onclick="openModal('photo44.jpg', 'Photo 44')">
+            <img src="photo43.jpg" alt="Photo 43" onclick="openModal('photo43.jpg', 'Photo 43')">
+            <img src="photo42.jpg" alt="Photo 42" onclick="openModal('photo42.jpg', 'Photo 42')">
+            <img src="photo41.jpg" alt="Photo 41" onclick="openModal('photo41.jpg', 'Photo 41')">
+            <img src="photo40.jpg" alt="Photo 40" onclick="openModal('photo40.jpg', 'Photo 40')">
+            <img src="photo39.jpg" alt="Photo 39" onclick="openModal('photo39.jpg', 'Photo 39')">
+            <img src="photo38.jpg" alt="Photo 38" onclick="openModal('photo38.jpg', 'Photo 38')">
+            <img src="photo37.jpg" alt="Photo 37" onclick="openModal('photo37.jpg', 'Photo 37')">
+            <img src="photo36.jpg" alt="Photo 36" onclick="openModal('photo36.jpg', 'Photo 36')">
+            <img src="photo35.jpg" alt="Photo 35" onclick="openModal('photo35.jpg', 'Photo 35')">
+            <img src="photo34.jpg" alt="Photo 34" onclick="openModal('photo34.jpg', 'Photo 34')">
+            <img src="photo33.jpg" alt="Photo 33" onclick="openModal('photo33.jpg', 'Photo 33')">
+            <img src="photo32.jpg" alt="Photo 32" onclick="openModal('photo32.jpg', 'Photo 32')">
+            <img src="photo31.jpg" alt="Photo 31" onclick="openModal('photo31.jpg', 'Photo 31')">
+            <img src="photo30.jpg" alt="Photo 30" onclick="openModal('photo30.jpg', 'Photo 30')">
+            <img src="photo29.jpg" alt="Photo 29" onclick="openModal('photo29.jpg', 'Photo 29')">
+            <img src="photo28.jpg" alt="Photo 28" onclick="openModal('photo28.jpg', 'Photo 28')">
+            <img src="photo27.jpg" alt="Photo 27" onclick="openModal('photo27.jpg', 'Photo 27')">
+            <img src="photo26.jpg" alt="Photo 26" onclick="openModal('photo26.jpg', 'Photo 26')">
+            <img src="photo25.jpg" alt="Photo 25" onclick="openModal('photo25.jpg', 'Photo 25')">
+            <img src="photo24.jpg" alt="Photo 24" onclick="openModal('photo24.jpg', 'Photo 24')">
+            <img src="photo23.jpg" alt="Photo 23" onclick="openModal('photo23.jpg', 'Photo 23')">
+            <img src="photo22.jpg" alt="Photo 22" onclick="openModal('photo22.jpg', 'Photo 22')">
+            <img src="photo21.jpg" alt="Photo 21" onclick="openModal('photo21.jpg', 'Photo 21')">
+            <img src="photo20.jpg" alt="Photo 20" onclick="openModal('photo20.jpg', 'Photo 20')">
+            <img src="photo19.jpg" alt="Photo 19" onclick="openModal('photo19.jpg', 'Photo 19')">
+            <img src="photo18.jpg" alt="Photo 18" onclick="openModal('photo18.jpg', 'Photo 18')">
+            <img src="photo17.jpg" alt="Photo 17" onclick="openModal('photo17.jpg', 'Photo 17')">
+            <img src="photo16.jpg" alt="Photo 16" onclick="openModal('photo16.jpg', 'Photo 16')">
+            <img src="photo15.jpg" alt="Photo 15" onclick="openModal('photo15.jpg', 'Photo 15')">
+            <img src="photo14.jpg" alt="Photo 14" onclick="openModal('photo14.jpg', 'Photo 14')">
+            <img src="photo13.jpg" alt="Photo 13" onclick="openModal('photo13.jpg', 'Photo 13')">
+            <img src="photo12.jpg" alt="Photo 12" onclick="openModal('photo12.jpg', 'Photo 12')">
+            <img src="photo11.jpg" alt="Photo 11" onclick="openModal('photo11.jpg', 'Photo 11')">
+            <img src="photo10.jpg" alt="Photo 10" onclick="openModal('photo10.jpg', 'Photo 10')">
+            <img src="photo9.jpg" alt="Photo 9" onclick="openModal('photo9.jpg', 'Photo 9')">
+            <img src="photo8.jpg" alt="Photo 8" onclick="openModal('photo8.jpg', 'Photo 8')">
+            <img src="photo7.jpg" alt="Photo 7" onclick="openModal('photo7.jpg', 'Photo 7')">
+            <img src="photo6.jpg" alt="Photo 6" onclick="openModal('photo6.jpg', 'Photo 6')">
+            <img src="photo5.jpg" alt="Photo 5" onclick="openModal('photo5.jpg', 'Photo 5')">
+            <img src="photo4.jpg" alt="Photo 4" onclick="openModal('photo4.jpg', 'Photo 4')">
+            <img src="photo3.jpg" alt="Photo 3" onclick="openModal('photo3.jpg', 'Photo 3')">
+            <img src="photo2.jpg" alt="Photo 2" onclick="openModal('photo2.jpg', 'Photo 2')">
+            <img src="photo1.jpg" alt="Photo 1" onclick="openModal('photo1.jpg', 'Photo 1')">
+        </div>
+    </section>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal" onclick="closeModal()">
+        <!-- Modal content -->
+        <span class="close" onclick="event.stopPropagation(); closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImg">
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; your dream come true</p>
+    </footer>
+
+    <script>
+        // Open the modal
+        function openModal(imgSrc, altText) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("modalImg");
+            modal.style.display = "flex"; // Show the modal
+            modalImg.src = imgSrc; // Set image source
+            modalImg.alt = altText; // Set alt text for image
+        }
+
+        // Close the modal
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none"; // Hide the modal
+        }
+    </script>
+</body>
+</html>

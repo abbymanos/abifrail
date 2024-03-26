@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fine Art</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Assuming you have a separate CSS file for styles -->
+    <style>
+        /* Additional CSS for the fine art gallery */
+        .fine-art-heading {
+            font-family: 'Bubblegum Sans', cursive; /* Bubble font */
+            animation: bounce 2s infinite alternate; /* Bouncing animation */
+            color: #09ff00; /* Yellow color */
+            text-shadow: 0 0 10px #ff00a6, 0 0 20px #ff00ae, 0 0 30px #ff00bb; /* Glowing effect */
+            font-size: 28px;
+            margin-top: -20px; /* Adjusted margin-top */
+            padding-top: 10px;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        /* Adjusted size for fine art images */
+        .gallery img {
+            max-width: 200px; /* Limiting maximum width */
+            height: auto; /* Auto-adjust height */
+            cursor: pointer; /* Change cursor to pointer */
+        }
+
+        /* Style for the expanded image container */
+        .expanded-image-container {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+            z-index: 999; /* Ensure it's above other elements */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Style for the expanded image */
+        .expanded-image {
+            max-width: 80%; /* Adjust as needed */
+            max-height: 80%; /* Adjust as needed */
+        }
+
+        /* Style for the close button */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-art"></div>
+    
+    <header>
+        <h1></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="photo.html">Photo</a></li>
+                <li><a href="video.html">Video</a></li>
+                <li><a href="music.html">Music</a></li>
+                <li><a href="fineart.html">Fine Art</a></li> 
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="design.html">Design</a></li> 
+                <li><a href="ollie.html">Ollie</a></li>
+                <li><a href="room.html">Bedroom</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main-content">
+        <h2 class="fine-art-heading">My Fine Art</h2> <!-- Apply bouncing and glowing effect -->
+        <div class="gallery">
+            <!-- Your fine art images here -->
+            <img src="art1.jpg" alt="Art 1" onclick="expandImage(this)">
+            <img src="art2.jpg" alt="Art 2" onclick="expandImage(this)">
+            <!-- Displaying only two art pieces -->
+        </div>
+    </section>
+
+    <!-- Expanded image container -->
+    <div id="expandedImageContainer" class="expanded-image-container" onclick="closeExpandedImage()">
+        <!-- Expanded image -->
+        <img id="expandedImage" class="expanded-image" src="" alt="Expanded Image">
+        <!-- Close button -->
+        <span class="close-button">&times;</span>
+    </div>
+
+    <footer>
+        <p>&copy; your dream come true</p>
+    </footer>
+
+    <script>
+        // Function to expand the clicked image
+        function expandImage(img) {
+            // Get the expanded image container
+            var expandedImageContainer = document.getElementById("expandedImageContainer");
+            // Get the expanded image element
+            var expandedImage = document.getElementById("expandedImage");
+            // Set the source of the expanded image
+            expandedImage.src = img.src;
+            // Display the expanded image container
+            expandedImageContainer.style.display = "flex";
+        }
+
+        // Function to close the expanded image
+        function closeExpandedImage() {
+            // Get the expanded image container
+            var expandedImageContainer = document.getElementById("expandedImageContainer");
+            // Hide the expanded image container
+            expandedImageContainer.style.display = "none";
+        }
+    </script>
+</body>
+</html>

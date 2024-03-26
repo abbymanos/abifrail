@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional CSS for the photo gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* CSS for bouncing and glowing effect */
+        h2.bouncing-text {
+            font-family: 'Bubblegum Sans', cursive; /* Bubble font */
+            animation: bounce 2s infinite alternate; /* Bouncing animation */
+            color: #09ff00; /* Yellow color */
+            text-shadow: 0 0 10px #ff00a6, 0 0 20px #ff00ae, 0 0 30px #ff00bb; /* Glowing effect */
+            font-size: 24px; /* Adjusted font size */
+            margin-top: -20px; /* Adjusted margin-top */
+            padding-top: 10px;
+            text-align: center; /* Center the text */
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        /* CSS for other videos section */
+        .other-videos {
+            margin-top: 50px; /* Adjusted margin-top */
+            text-align: center; /* Center the text */
+        }
+
+        .other-videos h2 {
+            font-family: 'Bubblegum Sans', cursive; /* Bubble font */
+            font-size: 24px; /* Adjusted font size */
+            color: #09ff00; /* Yellow color */
+            text-shadow: 0 0 10px #ff00a6, 0 0 20px #ff00ae, 0 0 30px #ff00bb; /* Glowing effect */
+            animation: bounce 2s infinite alternate; /* Bouncing animation */
+            margin-top: -20px; /* Adjusted margin-top */
+            padding-top: 10px;
+            text-align: center; /* Center the text */
+        }
+
+        /* Center the iframe */
+        .other-videos iframe {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-art"></div>
+    
+    <header>
+        <h1></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="photo.html">Photo</a></li>
+                <li><a href="video.html">Video</a></li>
+                <li><a href="music.html">Music</a></li>
+                <li><a href="fineart.html">Fine Art</a></li> 
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="design.html">Design</a></li> 
+                <li><a href="ollie.html">Ollie</a></li>
+                <li><a href="room.html">Bedroom</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main-content">
+        <h2 class="bouncing-text">My Videos</h2> <!-- Apply bouncing and glowing effect -->
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/oWD4uRVVxiU" frameborder="0" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/ybSjaxdPmJI" frameborder="0" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/bvsoXiD5Wac" frameborder="0" allowfullscreen></iframe>
+    </section>
+
+    <section class="other-videos">
+        <h2 class="bouncing-text">Other Videos I Helped With</h2> <!-- Apply bouncing and glowing effect -->
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/WqzfXFK8oQ0" frameborder="0" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/nu_j2_TRUvk" frameborder="0" allowfullscreen></iframe>
+    </section>
+
+    <footer>
+        <p>&copy; your dream come true</p>
+    </footer>
+</body>
+</html>

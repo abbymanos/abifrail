@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional CSS styles */
+        .about-me-header,
+        .about-you-header {
+            font-family: 'Bubblegum Sans', cursive; /* Bubble font */
+            animation: bounce 2s infinite alternate; /* Bouncing animation */
+            color: #09ff00; /* Yellow color */
+            text-shadow: 0 0 10px #ff00a6, 0 0 20px #ff00ae, 0 0 30px #ff00bb; /* Glowing effect */
+            font-size: 24px; /* Adjusted font size */
+            margin-top: 20px; /* Adjusted margin-top for consistency */
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px; /* Adjusted margin-top for consistency */
+        }
+
+        .about-section {
+            margin-bottom: 20px; /* Adjusted margin-bottom for consistency */
+        }
+
+        .drawing-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .drawing-box {
+            border: 2px solid #000;
+            margin-bottom: 20px;
+        }
+
+        .submit-button {
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .submit-button:hover {
+            background-color: #333;
+        }
+
+        .drawing {
+            margin-bottom: 10px;
+        }
+
+        .delete-button {
+            color: red;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .main-content p {
+            margin-bottom: 5px; /* Reduced margin-bottom for the "Instagram" link */
+        }
+
+        .main-content a {
+            margin-bottom: 10px; /* Adjusted margin-bottom for the "Instagram" link */
+        }
+    </style>
+</head>
+<body>
+    <div class="background-art"></div>
+    
+    <header>
+        <h1></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="photo.html">Photo</a></li>
+                <li><a href="video.html">Video</a></li>
+                <li><a href="music.html">Music</a></li>
+                <li><a href="fineart.html">Fine Art</a></li> 
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="design.html">Design</a></li> 
+                <li><a href="ollie.html">Ollie</a></li>
+                <li><a href="room.html">Bedroom</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main-content">
+        <div class="about-content">
+            <div class="about-section">
+                <p class="about-me-header">About Me!</p>
+                <p>Blah blah blah...</p>
+                <a href="https://www.instagram.com/abifrail">Instagram</a>
+            </div>
+            <!-- About You section -->
+            <div class="about-section">
+                <h2 class="about-you-header">About You</h2>
+                <div class="drawing-container">
+                    <p>Draw and submit your self portrait!</p>
+                    <canvas id="drawingCanvas" class="drawing-box" width="300" height="300"></canvas>
+                    <button class="submit-button" onclick="submitDrawing()">Submit</button>
+                    <div id="drawingsContainer"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; your dream come true</p>
+    </footer>
+
+    <script>
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+    
+        const canvas = document.getElementById('drawingCanvas');
+        const ctx = canvas.getContext('2d');
+    
+        function startDrawing(event) {
+            isDrawing = true;
+            [lastX, lastY] = [event.pageX - canvas.offsetLeft, event.pageY - canvas.offsetTop];
+        }
+    
+        function stopDrawing() {
+            isDrawing = false;
+        }
+    
+        function draw(event) {
+            if (!isDrawing) return;
+            event.preventDefault(); // Prevent scrolling on touch devices
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(event.pageX - canvas.offsetLeft, event.pageY - canvas.offsetTop);
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+            [lastX, lastY] = [event.pageX - canvas.offsetLeft, event.pageY - canvas.offsetTop];
+        }
+    
+        function submitDrawing() {
+            const dataUrl = canvas.toDataURL(); // Convert canvas to data URL
+            const img = new Image();
+            img.src = dataUrl;
+            img.classList.add('drawing');
+            const drawingsContainer = document.getElementById('drawingsContainer');
+            drawingsContainer.appendChild(img);
+            saveDrawing(dataUrl); // Save drawing to localStorage
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+        }
+    
+        function saveDrawing(dataUrl) {
+            let drawings = JSON.parse(localStorage.getItem('drawings')) || [];
+            drawings.push(dataUrl);
+            localStorage.setItem('drawings', JSON.stringify(drawings));
+        }
+    
+        function loadDrawings() {
+            const drawingsContainer = document.getElementById('drawingsContainer');
+            let drawings = JSON.parse(localStorage.getItem('drawings')) || [];
+            drawings.forEach(dataUrl => {
+                const img = new Image();
+                img.src = dataUrl;
+                img.classList.add('drawing');
+                drawingsContainer.appendChild(img);
+            });
+        }
+    
+        function deleteDrawing(event) {
+            const drawing = event.target;
+            if (drawing.classList.contains('drawing')) {
+                drawing.remove();
+                let drawings = JSON.parse(localStorage.getItem('drawings')) || [];
+                drawings = drawings.filter(dataUrl => dataUrl !== drawing.src);
+                localStorage.setItem('drawings', JSON.stringify(drawings));
+            }
+        }
+    
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('touchstart', function(event) {
+            // Handle touch events for touch devices
+            startDrawing(event.touches[0]);
+        });
+    
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('touchmove', function(event) {
+            // Handle touch events for touch devices
+            draw(event.touches[0]);
+        });
+    
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('touchend', stopDrawing);
+    
+        canvas.addEventListener('mouseout', stopDrawing);
+    
+        // Load drawings when the page is loaded
+        window.addEventListener('load', loadDrawings);
+    
+        // Event delegation for delete button
+        document.getElementById('drawingsContainer').addEventListener('click', deleteDrawing);
+    </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cute Heart Cursor</title>
+    <style>
+        /* Your CSS styles here */
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff; /* White color */
+            color: #333;
+            cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text x="0" y="15" font-family="Arial" font-size="24">♡</text></svg>'), auto;
+        }
+
+        .background-art {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            /* Change the background URL to star.gif */
+            background: url('star.gif') repeat;
+        }
+
+        header {
+            background-color: #ffffff; /* White color */
+            color: #000000;
+            padding: 20px;
+            text-align: center;
+            position: relative; /* Add relative positioning to header */
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="5" y="30" font-family="Arial" font-size="10" fill="black"></text></svg>');
+        }
+
+        header h1 {
+            font-size: 48px; /* 2x bigger font size */
+            font-weight: bold;
+            margin-bottom: 10px; /* Lower the header */
+        }
+
+        nav ul {
+            list-style-type: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #2cd71c;
+            font-weight: bold;
+        }
+
+        .main-content {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .main-content h2 {
+            font-size: 72px; /* 2x bigger font size */
+            margin-bottom: 20px; /* Lower the header */
+        }
+
+        .main-content p {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .apple-img {
+            width: 100px;
+            height: auto;
+        }
+
+        footer {
+            background-color: #ffffff; /* White color */
+            color: #1fd925;
+            padding: 20px;
+            text-align: center;
+            position: relative; /* Add relative positioning to footer */
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="5" y="30" font-family="Arial" font-size="10" fill="black"></text></svg>');
+        }
+
+        #clearButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #clearButton:hover {
+            background-color: #333;
+        }
+
+        /* Magic 8 Ball Styles */
+        .magic-8-ball-container {
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .magic-8-ball {
+            width: 150px;
+            height: auto;
+        }
+
+        .shake-animation {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(-15deg); }
+            50% { transform: rotate(15deg); }
+            75% { transform: rotate(-10deg); }
+            100% { transform: rotate(0deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="background-art"></div> <!-- Background art for header -->
+        <h1></h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="photo.html">Photo</a></li>
+                <li><a href="video.html">Video</a></li>
+                <li><a href="music.html">Music</a></li>
+                <li><a href="fineart.html">Fine Art</a></li> 
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="design.html">Design</a></li> 
+                <li><a href="ollie.html">Ollie</a></li>
+                <li><a href="room.html">Bedroom</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main-content">
+        <h2>ABIFRAIL</h2>
+        <div class="magic-8-ball-container" onclick="shakeMagic8Ball()">
+            <img src="8ball.png" alt="Magic 8 Ball" class="magic-8-ball">
+        </div>
+    </section>
+
+    <footer>
+        <div class="background-art"></div> <!-- Background art for footer -->
+        <p>&copy; your dream come true</p>
+    </footer>
+
+    <script>
+        // JavaScript
+        function shakeMagic8Ball() {
+            const magic8Ball = document.querySelector('.magic-8-ball');
+            magic8Ball.classList.add('shake-animation');
+            setTimeout(() => {
+                const answer = getMagic8BallAnswer();
+                alert(answer);
+                magic8Ball.classList.remove('shake-animation');
+            }, 500); // Adjust timing to match the animation duration
+        }
+
+        function getMagic8BallAnswer() {
+            const answers = ["Yes", "No", "Maybe", "Try Again", "Ask Later", "Outlook Good", "Doubtful", "Definitely"];
+            const randomIndex = Math.floor(Math.random() * answers.length);
+            return answers[randomIndex];
+        }
+    </script>
+</body>
+</html>

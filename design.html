@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional CSS styles */
+        body, header, footer {
+            margin: 0;
+            padding: 0;
+            background-color: transparent; /* Change to transparent */
+        }
+
+        .background-art {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        header {
+            background-color: transparent; /* Transparent header background */
+            color: #000000;
+            padding: 20px;
+            text-align: center;
+            z-index: 1; /* Ensure header is above background */
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #2cd71c;
+            font-weight: bold;
+        }
+
+        .main-content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .person-container {
+            position: relative;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .person {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .clothing-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align clothing items to the top */
+        }
+
+        .clothing {
+            width: 100px; /* Adjust size of clothing items */
+            cursor: pointer;
+            position: absolute;
+        }
+
+        .instruction {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .header-text {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-family: 'Bubblegum Sans', cursive; /* Bubble font */
+            animation: bounce 2s infinite alternate; /* Bouncing animation */
+            color: #09ff00; /* Yellow color */
+            text-shadow: 0 0 10px #ff00a6, 0 0 20px #ff00ae, 0 0 30px #ff00bb; /* Glowing effect */
+        }
+
+        footer {
+            background-color: transparent; /* Transparent footer background */
+            color: #000000;
+            padding: 20px;
+            text-align: center;
+            z-index: 1; /* Ensure footer is above background */
+            position: relative; /* Set footer position to relative */
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        /* Media query for mobile devices */
+        @media only screen and (max-width: 600px) {
+            .clothing-container {
+                margin-top: 200px; /* Adjusted margin-top for mobile devices */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-art"></div>
+    
+    <header>
+        <h1></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="photo.html">Photo</a></li>
+                <li><a href="video.html">Video</a></li>
+                <li><a href="music.html">Music</a></li>
+                <li><a href="fineart.html">Fine Art</a></li> 
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="design.html">Design</a></li> 
+                <li><a href="ollie.html">Ollie</a></li>
+                <li><a href="room.html">Bedroom</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Design section -->
+    <section class="main-content">
+        <h2 class="header-text">My Fashion Designs</h2>
+        <p class="instruction">Drag and drop clothes onto the figure.</p>
+        <div class="person-container">
+            <img src="person.png" alt="Person" class="person">
+        </div>
+        <div class="clothing-container">
+            <img src="clothing1.png" alt="Clothing 1" class="clothing" id="clothing1" style="left: 10px; top: 240px;">
+            <img src="clothing2.png" alt="Clothing 2" class="clothing" id="clothing2" style="left: 120px; top: 240px;">
+            <img src="clothing3.png" alt="Clothing 3" class="clothing" id="clothing3" style="left: 320px; top: 240px;">
+            <img src="clothing4.png" alt="Clothing 4" class="clothing" id="clothing4" style="left: 220px; top: 240px;">
+            <img src="clothing5.png" alt="Clothing 5" class="clothing" id="clothing5" style="right: 120px; top: 240px;">
+            <img src="clothing6.png" alt="Clothing 6" class="clothing" id="clothing6" style="right: 220px; top: 240px;">
+            <img src="clothing7.png" alt="Clothing 7" class="clothing" id="clothing7" style="right: 20px; top: 240px;">
+            <img src="clothing8.png" alt="Clothing 8" class="clothing" id="clothing8" style="right: 320px; top: 240px;">
+            <img src="clothing9.png" alt="Clothing 9" class="clothing" id="clothing9" style="left: 120px; bottom: -100px;">
+            <img src="clothing10.png" alt="Clothing 10" class="clothing" id="clothing10" style="left: 10px; bottom: -100px;">
+            <img src="clothing14.png" alt="Clothing 14" class="clothing" id="clothing14" style="left: 320px; bottom: -100px;">
+            <img src="clothing15.png" alt="Clothing 15" class="clothing" id="clothing15" style="right: 220px; bottom: -100px;">
+            <img src="clothing16.png" alt="Clothing 16" class="clothing" id="clothing16" style="right: 120px; bottom: -100px;">
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; your dream come true</p>
+    </footer>
+
+    <script>
+        let activeItem = null;
+        let initialX = 0;
+        let initialY = 0;
+    
+        // Function to handle mouse down event on clothing items
+        function handleMouseDown(event) {
+            activeItem = event.target;
+            const boundingRect = activeItem.getBoundingClientRect();
+            initialX = event.clientX - boundingRect.left - boundingRect.width / 2;
+            initialY = event.clientY - boundingRect.top - boundingRect.height / 2;
+            document.addEventListener('mousemove', handleMouseMove);
+        }
+    
+        // Function to handle mouse move event
+        function handleMouseMove(event) {
+            const newX = event.clientX - initialX;
+            const newY = event.clientY - initialY;
+            activeItem.style.left = newX + 'px';
+            activeItem.style.top = newY + 'px';
+        }
+    
+        // Function to handle mouse up event
+        function handleMouseUp() {
+            document.removeEventListener('mousemove', handleMouseMove);
+            activeItem = null;
+        }
+    
+        // Add event listeners for mouse events
+        document.querySelectorAll('.clothing').forEach(item => {
+            item.addEventListener('mousedown', handleMouseDown);
+        });
+        document.addEventListener('mouseup', handleMouseUp);
+    </script>
+</body>
+</html>

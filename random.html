@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cute Heart Cursor</title>
+        <style>
+            /* Your CSS styles here */
+            /* Reset default margin and padding */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+    
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #ffffff; /* White color */
+                color: #333;
+                cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text x="0" y="15" font-family="Arial" font-size="24">♡</text></svg>'), auto;
+            }
+    
+            .background-art {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                pointer-events: none;
+                /* Change the background URL to star.gif */
+                background: url('star.gif') repeat;
+            }
+    
+            header {
+                background-color: #ffffff; /* White color */
+                color: #000000;
+                padding: 20px;
+                text-align: center;
+                position: relative; /* Add relative positioning to header */
+                background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="5" y="30" font-family="Arial" font-size="10" fill="black"></text></svg>');
+            }
+    
+            header h1 {
+                font-size: 48px; /* 2x bigger font size */
+                font-weight: bold;
+                margin-bottom: 10px; /* Lower the header */
+            }
+    
+            nav ul {
+                list-style-type: none;
+            }
+    
+            nav ul li {
+                display: inline;
+                margin-right: 20px;
+            }
+    
+            nav ul li a {
+                text-decoration: none;
+                color: #2cd71c;
+                font-weight: bold;
+            }
+    
+            .main-content {
+                text-align: center;
+                padding: 100px 20px;
+            }
+    
+            .main-content h2 {
+                font-size: 72px; /* 2x bigger font size */
+                margin-bottom: 20px; /* Lower the header */
+            }
+    
+            .main-content p {
+                font-size: 18px;
+                margin-bottom: 40px;
+            }
+    
+            .apple-img {
+                width: 100px;
+                height: auto;
+            }
+    
+            footer {
+            background-color: #ffffff; /* White color */
+            color: #1fd925;
+            padding: 20px;
+            text-align: center;
+            position: relative; /* Add relative positioning to footer */
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="5" y="30" font-family="Arial" font-size="10" fill="black"></text></svg>');
+        }
+    
+            #clearButton {
+                display: block;
+                margin: 20px auto;
+                padding: 10px 20px;
+                background-color: #000;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+            }
+    
+            #clearButton:hover {
+                background-color: #333;
+            }
+
+        .main-content {
+            padding: 20px;
+        }
+
+        /* Rest of your existing styles */
+        .panorama {
+            width: 100vw;
+            height: auto;
+        }
+
+        .clickable-area {
+            position: absolute;
+            cursor: pointer;
+        }
+
+        /* Adjusted position for each clickable area */
+        #brown-bag-click {
+            bottom: 130px;
+            right: 200px;
+            width: 100px;
+            height: 50px;
+            background-color: transparent;
+        }
+
+        #white-towel-click {
+            top: 150px;
+            left: 250px;
+            width: 150px;
+            height: 100px;
+            background-color: transparent;
+        }
+
+        #lamp-click {
+            top: 100px;
+            right: 50px;
+            width: 100px;
+            height: 150px;
+            background-color: transparent;
+        }
+
+        #dead-plant-click {
+            top: 100px;
+            right: 150px;
+            width: 100px;
+            height: 100px;
+            background-color: transparent;
+        }
+
+        #water-bottle-click {
+            bottom: 100px;
+            left: 130px;
+            width: 100px;
+            height: 150px;
+            background-color: transparent;
+        }
+
+        #feet-click {
+            bottom: 50px;
+            left: 380px;
+            width: 100px;
+            height: 150px;
+            background-color: transparent;
+        }
+
+        #painting-click {
+            top: 20px;
+            left: 90px;
+            width: 100px;
+            height: 100px;
+            background-color: transparent;
+        }
+
+        .description {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            padding: 20px;
+            background-color: white;
+            border: 1px solid black;
+            z-index: 1;
+            animation: bounceIn 0.5s forwards;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: translate(-50%, -50%) scale(0); }
+            70% { transform: translate(-50%, -50%) scale(1.1); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+        @keyframes bounce {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-10px); }
+    }
+    </style>
+</head>
+<body>
+    <div class="background-art"></div>
+    
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="photo.html">Photo</a></li>
+                <li><a href="video.html">Video</a></li>
+                <li><a href="music.html">Music</a></li>
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="design.html">Design</a></li> 
+                <li><a href="ollie.html">Ollie</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <h1 style="font-family: 'Bubblegum Sans', cursive; font-size: 36px; color: #09ff00; text-shadow: 0 0 10px #ff00a6, 0 0 20px #ff00ae, 0 0 30px #ff00bb; animation: bounce 2s infinite alternate;">Interactive Bedroom</h1>
+        <p>hover over items in my bedroom and click to learn more</p>
+    </header>
+
+    <section class="main-content">
+        <img src="room.jpg" alt="Panoramic Bedroom" class="panorama">
+        
+        <!-- Clickable areas -->
+        <div id="brown-bag-click" class="clickable-area" onclick="showDescription('room1')"></div>
+        <div id="white-towel-click" class="clickable-area" onclick="showDescription('room2')"></div>
+        <div id="lamp-click" class="clickable-area" onclick="showDescription('room3')"></div>
+        <div id="dead-plant-click" class="clickable-area" onclick="showDescription('room4')"></div>
+        <div id="water-bottle-click" class="clickable-area" onclick="showDescription('room5')"></div>
+        <div id="feet-click" class="clickable-area" onclick="showDescription('room6')"></div>
+        <div id="painting-click" class="clickable-area" onclick="showDescription('room7')"></div>
+
+        <!-- Description popups -->
+        <div id="room1-description" class="description">
+            <h2>Subway Trash</h2>
+            <img src="room1.png" alt="Brown Bag" style="width: 100px; height: 100px;">
+            <p>Aria said that I'm the only person she knows that eats subway...that's wild to me because I believe it's the best tasting sandwich in the world. Other than the sandwiches that Carolyn makes me. I usually order italian herbs and cheese on a foot long, turkey, provolone toasted, lettuce, tomato, green pepper, pickles, olives, mayonnaise. I'm a regular and the other day I was distracted texting while they were taking my order and they had already put turkey on the sandwich before I said             anything. I was texting my ex-situationship afraid that I said something wrong and scrolling through instagram stories. Everytime I check out, the man that works there giggles and asks if I am taking the sandwich to go or to stay, and then asks me to stay next time I come. I act very shy and quiet with them and also with baristas at my local coffee shop. I want to eat healthier...</p>
+        </div>
+        <div id="room2-description" class="description">
+            <h2>Dirty Towel</h2>
+            <img src="room2.png" alt="White Towel" style="width: 100px; height: 100px;">
+            <p>It's full of black makeup because the only time I take my makeup off is from the shower, it's only eye makeup. Also, I use it everyday, I feel greasy and stinky if I go more than a day showering, and it also makes me feel like I am ready to start the day and go out into the world. It feels good to feel clean. I shampoo and condition everyday too, I heard that's bad for me.</p>
+        </div>
+        <div id="room3-description" class="description">
+            <h2>New Lamp</h2>
+            <img src="room3.png" alt="Lamp" style="width: 100px; height: 100px;">
+            <p>bought this lampshade at bushwick market recently. it's cool and gothic but I feel like my room is still too dark. I have had these giant lamps without lampshades sitting in my living room for 3 years, most of them not being used because they don't have shades or working bulbs. Last time I got bulbs, my cat ollie got the zoomies and immediately broke two of them.</p>
+        </div>
+        <div id="room4-description" class="description">
+            <h2>Dead Plant</h2>
+            <img src="room4.png" alt="Dead Plant" style="width: 100px; height: 100px;">
+            <p>I water my plants like, twice a month. this chore is very hard and stressful for me for some reason. I just hate the back and forth of going to fill up the water container and watering the plants, I wish I could just fill it up once. I am very lazy and I need to work on that part of myself, it might be my greatest flaw. At least I keep my room clean! (jkjk)</p>
+        </div>
+        <div id="room5-description" class="description">
+            <h2>Water Bottle</h2>
+            <img src="room5.png" alt="Water Bottle" style="width: 100px; height: 100px;">
+            <p>I water my insides probably as often as I water my plans. I dont know... it will be 5pm and I'll realize I only had a glass of water in the morning. I don't typically get thirsty unless I eat very salty food or go for an intense exercise, and I cut out exercise as soon as gym stopped being a requirement. That's probably bad for me and looking around my room is bringing to the surface my many unhealthy habits. I really enjoy having this bottle instead of a cup, I can sip it while upside down. and not worry about ollie drinking from it. I do think about the time cockroaches snuck into my friends waterbottle and she sipped one up into her mouth :)...I think about that and then I close the straw thing.</p>
+        </div>
+        <div id="room6-description" class="description">
+            <h2>Fuzzy Socks</h2>
+            <img src="room6.png" alt="Feet" style="width: 100px; height: 100px;">
+            <p>I like these fuzzy socks and I think the bear is cutie.</p>
+        </div>
+        <div id="room7-description" class="description">
+            <h2>Ex's Painting</h2>
+            <img src="room7.png" alt="Painting" style="width: 100px; height: 100px;">
+            <p>My ex painted this for one of his classes and he let me have it. he gave this to me when we were exes, and he gave me the art to the left of it when we were dating. I wish him the best, he's living somewhere on an island I think, and he left society behind.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="background-art"></div> <!-- Background art for footer -->
+        <p>&copy; your dream come true</p>
+    </footer>
+
+    <script>
+        function showDescription(objectId) {
+            const description = document.getElementById(`${objectId}-description`);
+            if (description.style.display === "block") {
+                description.style.display = "none";
+            } else {
+                description.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
+

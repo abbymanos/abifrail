@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal</title>
+    <style>
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('journal.jpg'); /* Set background image */
+            background-size: cover; /* Cover the entire viewport */
+            background-repeat: no-repeat; /* No repeat of background image */
+            background-position: center top; /* Center the background image vertically and horizontally */
+            color: #333;
+            cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text x="0" y="15" font-family="Arial" font-size="24">♡</text></svg>'), auto;
+        }
+
+        header, footer {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 50px;
+            text-align: center;
+            color: #ffffff00; /* White text color on top of the star background */
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent black background */
+        }
+
+        nav ul {
+            list-style-type: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #2cd71c;
+            font-weight: bold;
+        }
+
+        .main-content {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .main-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-family: 'Bubblegum Sans', cursive; /* Bubble font */
+            animation: bounce 2s infinite alternate; /* Bouncing animation */
+            color: #09ff00; /* Yellow color */
+            text-shadow: 0 0 10px #ff00a6, 0 0 20px #ff00ae, 0 0 30px #ff00bb; /* Glowing effect */
+        }
+
+        .main-content p {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        footer {
+            background-color: rgba(255, 255, 255, 0.511); /* Semi-transparent black background */
+        }
+
+        /* Style for journal entries */
+        .journal-entry {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px; /* Increase margin between entries */
+            max-width: 80%; /* Limit width of entry */
+            text-align: left; /* Align text to the left */
+            position: relative;
+            word-wrap: break-word; /* Wrap long words */
+        }
+
+        .delete-button {
+            color: red;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .entry-date {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* Container for submission box and journal entries */
+        .entry-container {
+            display: flex; /* Use flexbox for alignment */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
+            margin-top: 20px;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="photo.html">Photo</a></li>
+                <li><a href="video.html">Video</a></li>
+                <li><a href="music.html">Music</a></li>
+                <li><a href="fineart.html">Fine Art</a></li> 
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="design.html">Design</a></li> 
+                <li><a href="ollie.html">Ollie</a></li>
+                <li><a href="room.html">Bedroom</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main-content">
+        <h2>Journal Thoughts</h2>
+        <p>My thoughts and yours if you want.</p>
+
+        <!-- Form for journal entry submission -->
+        <form id="journalForm">
+            <input type="text" id="journalEntry" placeholder="Write your journal entry...">
+            <input type="submit" value="Submit">
+        </form>
+
+        <!-- Container for journal entries -->
+        <div class="entry-container" id="journalEntries"></div>
+    </section>
+
+    <footer>
+        <p>&copy; Your Dream Come True</p>
+    </footer>
+
+    <script>
+        // Function to handle submission of journal entry
+        function submitEntry(event) {
+            event.preventDefault(); // Prevent default form submission behavior
+
+            const journalEntry = document.getElementById('journalEntry').value; // Get journal entry text
+            if (!journalEntry) return; // Don't proceed if entry is empty
+
+            const now = new Date(); // Get current date and time
+            const dateString = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
+            const entryDiv = document.createElement('div'); // Create a div for the entry
+            entryDiv.classList.add('journal-entry'); // Add CSS class for styling
+
+            // Create paragraph element for the entry text
+            const entryText = document.createElement('p');
+            entryText.textContent = journalEntry;
+
+            // Create span element for the entry date
+            const entryDate = document.createElement('span');
+            entryDate.classList.add('entry-date');
+            entryDate.textContent = dateString;
+
+            // Create delete button
+            const deleteButton = document.createElement('span');
+            deleteButton.classList.add('delete-button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.addEventListener('click', function() {
+                entryDiv.remove(); // Remove the entry when delete button is clicked
+                saveEntries(); // Save updated entries to localStorage
+            });
+
+            // Append entry text, entry date, and delete button to entryDiv
+            entryDiv.appendChild(entryText);
+            entryDiv.appendChild(entryDate);
+            entryDiv.appendChild(deleteButton);
+
+            // Append entryDiv to journalEntries container
+            document.getElementById('journalEntries').appendChild(entryDiv);
+
+            saveEntries(); // Save entries to localStorage
+        }
+
+        // Function to save entries to localStorage
+        function saveEntries() {
+            const entries = document.getElementById('journalEntries').innerHTML;
+            localStorage.setItem('journalEntries', entries);
+        }
+
+        // Function to load saved entries from localStorage
+        function loadEntries() {
+            const savedEntries = localStorage.getItem('journalEntries');
+            if (savedEntries) {
+                document.getElementById('journalEntries').innerHTML = savedEntries;
+                // Add delete event listeners to existing entries after loading
+                const deleteButtons = document.querySelectorAll('.delete-button');
+                deleteButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        button.parentElement.remove(); // Remove the entry when delete button is clicked
+                        saveEntries(); // Save updated entries to localStorage
+                    });
+                });
+            }
+        }
+
+        // Load saved entries when the page loads
+        window.addEventListener('load', loadEntries);
+
+        // Event listener for form submission
+        document.getElementById('journalForm').addEventListener('submit', submitEntry);
+    </script>
+</body>
+</html>
